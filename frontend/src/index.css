@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #F5F6FA;
+  color: #10172A;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono, .seat-code, .ticket-token {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Signature element: a boarding-pass style ticket stub with a perforated
+   edge and punched notches, echoing the physical "tear here" ticket this
+   digital QR pass replaces. */
+.ticket-stub {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px -12px rgba(16, 23, 42, 0.25);
+  overflow: hidden;
+}
+
+.ticket-stub::before,
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: #F5F6FA;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+.ticket-stub::before { left: -11px; }
+.ticket-stub::after { right: -11px; }
+
+.ticket-perforation {
+  border-left: 2px dashed #E2E5EE;
+}
+
+@media (max-width: 640px) {
+  .ticket-stub {
+    display: block;
+  }
+  .ticket-perforation {
+    border-left: none;
+    border-top: 2px dashed #E2E5EE;
+  }
+}
